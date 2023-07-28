@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "npx electronmon ."
+    "dev": "npx electronmon .",
+    "react": "cd app && npm run build && cd .. && npm run dev"
   },
   "keywords": [
     "electron",

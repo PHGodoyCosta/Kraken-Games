@@ -5,7 +5,12 @@ const path = require('path')
 function createMainWindow() {
     const window = new BrowserWindow({
         width: 1000,
-        height: 800
+        height: 800,
+        webPreferences: {
+            contextIsolation: true,
+            nodeIntegration: true,
+            preload: path.join(__dirname, "preload.js")
+        }
     })
 
     const startUrl = url.format({
@@ -16,6 +21,10 @@ function createMainWindow() {
     console.log(`\n\n${startUrl}\n\n`)
 
     window.loadURL(startUrl)
+
+    window.webContents.openDevTools()
 }
+
+
 
 app.whenReady().then(createMainWindow)
